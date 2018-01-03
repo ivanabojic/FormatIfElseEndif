@@ -1,0 +1,38 @@
+
+ 
+#Now#
+
+Our file #FileNo#
+
+#CompanyName#
+#CompanyMailBlock#
+Attention:	#CompanySigningAuthority#
+Dear #CompanySigningAuthoritySalutation#:
+Re:	#CompanyName# (the “Company”) <if CompanyDoingBusinessAs? eq '1'>
+Doing Business as #CompanyDoingBusinessAs#</if><if PendingDirectorsElectedOnCount gt '0' OR PendingDirectorsResignedOnCount gt '0'>
+Change in #TC(Directors)#<if PendingOfficersAppointedOnCount gt '0' OR PendingOfficersResignedOnCount gt '0'> and change in #TC(Officers)#</if><else><if PendingOfficersAppointedOnCount gt '0' OR PendingOfficersResignedOnCount gt '0'>
+Change of #TC(Officers)#<else><if PendingDirectorsUpdatesCount gt '0'>
+Change in Address of #TC(PendingDirectorsUpdates)#</if></if></if>
+We are pleased to enclose<if PendingDirectorsUpdatesCount gt '0' AND PendingDirectorsElectedOnCount eq '0' AND PendingDirectorsResignedOnCount eq '0' AND PendingOfficersAppointedOnCount eq '0' AND PendingOfficersResignedOnCount eq '0'> Form 10 – Notice of Change of Directors relating to the change of address of<if PendingDirectorsUpdatesCount eq '1'> #PendingDirectorUpdate#<else> the #PendingDirectorsUpdates#</if>.
+Once reviewed, approved and executed, we kindly ask that you return this document to our office at your earliest convenience.  Upon our receipt, we will attend to filing the enclosed, pursuant to the requirements of the Business Corporations Act (British Columbia).<else> the following for execution:<if DirectorsAppointDirectors? eq '1'><if ChangeInDirectorsGreaterThanOneThird? eq '0'><if PendingDirectorsElectedOnCount gt '0' OR PendingDirectorsResignedOnCount gt '0'> 
+1.	Resolutions of the #TC(DirectorsNotResignedOn)# authorizing the change in #Directors#<if PendingOfficersAppointedOnCount gt '0' OR PendingOfficersResignedOnCount gt '0'> and the change in #Officers#;</if></if><else><if PendingDirectorsElectedOnCount gt '0' OR PendingDirectorsResignedOnCount gt '0'> 
+2.	Resolutions of the #TC(VotingShareholdersNotCancelledOn)# authorizing the change in #Directors#;</if><if PendingOfficersAppointedOnCount gt '0' OR PendingOfficersResignedOnCount gt '0'> 
+3.	Resolutions of the #TC(DirectorsNotResignedOn)# authorizing the change in #Officers#;</if></if><else><if PendingDirectorsElectedOnCount gt '0' OR PendingDirectorsResignedOnCount gt '0'> 
+4.	Resolutions of the #TC(VotingShareholdersNotCancelledOn)# authorizing the change in #Directors#;</if><if PendingOfficersAppointedOnCount gt '0' OR PendingOfficersResignedOnCount gt '0'> 
+5.	Resolutions of the #TC(DirectorsNotResignedOn)# authorizing the change in #Officers#;</if></if><if LawyerSignsAR? eq '0'><if PendingDirectorsElectedOnCount gt '0' OR PendingDirectorsResignedOnCount gt '0'> 
+6.	Form 10 – Notice of Change of Directors;<else><if PendingDirectorsUpdatesCount gt '0'> 
+7.	Form 10 – Notice of Change of Directors (Address change only).</if></if></if><repeat QPendingDirectorsElectedOn AS Directors><set ContactID = Directors.ContactID> 
+8.	Consent to Act as Director of #Contact#<if Last?><if PendingDirectorsResignedOnCount gt '0'>;<else><if PendingOfficersAppointedOnCount gt '0'>;<else><if PendingOfficersResignedOnCount gt '0'>;<else>.</if></if></if><else>;</if></repeat><repeat QPendingDirectorsResignedOn AS Directors><set ContactID = Directors.ContactID> 
+9.	Resignation as Director of #Contact#<if Last?><if PendingOfficersAppointedOnCount gt '0'>;<else><if PendingOfficersResignedOnCount gt '0'>;<else>.</if></if><else>;</if></repeat><repeat QPendingOfficersAppointedOn AS Officers><set ContactID = Officers.ContactID> 
+10.	Acknowledgement of Qualifications to Act as #ContactTitle# of #Contact#<if Last?><if PendingOfficersResignedOnCount gt '0'>;<else>.</if><else>;</if></repeat><repeat QPendingOfficersResignedOn AS Officers><set ContactID = Officers.ContactID> 
+11.	Resignation as #ContactTitle# of #Contact#<if Last?>.<else>;</if></repeat> 
+Once reviewed, approved and executed, we kindly ask that you return these documents to our office at your earliest convenience.  Upon our receipt, we will attend to filing the enclosed documents, pursuant to the requirements of the Business Corporations Act (British Columbia).</if>
+We trust you will find the foregoing and enclosed to be in order, however, should you have any questions, please do not hesitate to contact the writer<if AssignedLawyerAssignedAssistantSame? eq '0'> or #AssignedLegalAssistant# of this office</if>.
+Yours truly,
+#UC(LawFirm)#
+
+Per:
+
+#AssignedLawyer#
+#AssignedPersonsInitialsSet#
+Encl.
